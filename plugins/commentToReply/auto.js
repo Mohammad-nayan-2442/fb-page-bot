@@ -1,5 +1,5 @@
 module.exports = {
-  run: async ({ commentId, sender, replyToComment }) => {
+  run: async ({ commentId, sender, replyToComment, nayan}) => {
     await replyToComment(
       commentId,
       `@[${sender.id}] ❤️ Thanks for your comment!`

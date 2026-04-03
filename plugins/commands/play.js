@@ -26,6 +26,8 @@ module.exports = {
     }
 
     try {
+
+      await nayan.sendMessage(senderId, { text: `🎵 Title: ${videos[0].title}\n\n Downloading...` });
       
       const api = `https://nayan-video-downloader.vercel.app/ytdown?url=https://youtu.be/${encodeURIComponent(videos[0].videoId)}`;
       const { data } = await axios.get(api);
@@ -36,31 +38,15 @@ module.exports = {
       const info = data.data;
 
       
-      const audioPayload = JSON.stringify({
-        type: "playback",
-        mode: "audio",
-        url: info.audio,
-        title: info.title
+      await nayan.sendMessage(senderId, {
+        attachment: {
+          type: "audio",
+          payload: {
+            url: info.audio
+          }
+        }
       });
-
-      const videoPayload = JSON.stringify({
-        type: "playback",
-        mode: "video",
-        url: info.video,
-        title: info.title
-      });
-
       
-      await nayan.sendGeneric(
-        senderId,
-        info.title,
-        info.thumb,
-        "Select your format:",
-        [
-          { type: "postback", title: "🎵 Audio", payload: audioPayload },
-          { type: "postback", title: "🎬 Video", payload: videoPayload }
-        ]
-      );
     } catch (err) {
       console.error("[PLAY CMD ERROR]", err.message);
       return nayan.sendMessage(senderId, { text: "⚠️ Something went wrong" });

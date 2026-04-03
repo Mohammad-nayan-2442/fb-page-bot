@@ -26,38 +26,16 @@ module.exports = {
       }
 
       const info = data.data;
+      await nayan.sendMessage(senderId, { text: `🎬 Title: ${info.title}` });
 
-      // payload JSON
-      const lowPayload = JSON.stringify({
-        type: "alldown",
-        quality: "low",
-        url: info.low
-      });
-
-      const highPayload = JSON.stringify({
-        type: "alldown",
-        quality: "high",
-        url: info.high
-      });
-
-      await nayan.sendGeneric(
-        senderId,
-        info.title || "Video Downloader",
-        info.thumbnail,
-        "Select video quality",
-        [
-          {
-            type: "postback",
-            title: "⬇️ Low Quality",
-            payload: lowPayload
-          },
-          {
-            type: "postback",
-            title: "⬇️ High Quality",
-            payload: highPayload
+      await nayan.sendMessage(senderId, {
+        attachment: {
+          type: "video",
+          payload: {
+            url: info.high
           }
-        ]
-      );
+        }
+      });
 
     } catch (e) {
       console.error(e);
@@ -78,6 +56,7 @@ module.exports = {
     try {
       const api = `https://nayan-video-downloader.vercel.app/alldown?url=${encodeURIComponent(url)}`;
       const { data } = await axios.get(api);
+      console.log(data)
 
       if (!data.status) {
         return nayan.sendMessage(senderId, { text: "❌ Download failed" });
@@ -85,37 +64,16 @@ module.exports = {
 
       const info = data.data;
 
-      // payload JSON
-      const lowPayload = JSON.stringify({
-        type: "alldown",
-        quality: "low",
-        url: info.low
-      });
+      await nayan.sendMessage(senderId, { text: `🎬 Title: ${info.title}` });
 
-      const highPayload = JSON.stringify({
-        type: "alldown",
-        quality: "high",
-        url: info.high
-      });
-
-      await nayan.sendGeneric(
-        senderId,
-        info.title || "Video Downloader",
-        info.thumbnail,
-        "Select video quality",
-        [
-          {
-            type: "postback",
-            title: "⬇️ Low Quality",
-            payload: lowPayload
-          },
-          {
-            type: "postback",
-            title: "⬇️ High Quality",
-            payload: highPayload
+      await nayan.sendMessage(senderId, {
+        attachment: {
+          type: "video",
+          payload: {
+            url: info.high
           }
-        ]
-      );
+        }
+      });
 
     } catch (e) {
       console.error(e);

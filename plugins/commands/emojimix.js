@@ -33,7 +33,7 @@ module.exports = {
 
       
       const apiList = await axios.get(
-        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-07/Nayan/main/api.json"
+        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-OFFICIAL/Nayan/main/api.json"
       );
       const base = apiList.data.api;
 

@@ -45,7 +45,7 @@ module.exports = {
     
     try {
       const apis = await axios.get(
-        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-07/Nayan/main/api.json"
+        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-OFFICIAL/Nayan/main/api.json"
       );
       const apiurl = apis.data.api;
 
@@ -81,7 +81,7 @@ module.exports = {
 
     try {
       const apis = await axios.get(
-        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-07/Nayan/main/api.json"
+        "https://raw.githubusercontent.com/MOHAMMAD-NAYAN-OFFICIAL/Nayan/main/api.json"
       );
       const apiurl = apis.data.api;
 

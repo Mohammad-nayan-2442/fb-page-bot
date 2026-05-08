@@ -17,8 +17,9 @@ if (!Array.isArray(global.client.handleReply)) global.client.handleReply = [];
  * @param {object} event
  */
 async function handleMessage(event) {
-  const senderId = event.sender.id;
   console.log(event)
+  const senderId = event.sender.id;
+  
   const message = event.message;
   if (!message || message.is_echo) return;
 

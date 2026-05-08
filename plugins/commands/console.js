@@ -13,7 +13,7 @@ module.exports = {
     const line = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
     const small = "──────────────────────────────────────";
 
-    const sender = event.sender?.id || "Unknown";
+    const sender = event.sender?.id || event.from?.id || "Unknown";
     const receiver = event.recipient?.id || "Unknown";
     const time = new Date(event.timestamp).toLocaleString("en-GB", {
       timeZone: "Asia/Dhaka",

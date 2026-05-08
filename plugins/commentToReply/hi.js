@@ -6,7 +6,7 @@ module.exports = {
   run: async ({ commentId, sender, replyToComment, nayan, value}) => {
     await replyToComment(
       commentId,
-      `@[${sender.id}] 👋 Hey! How can I help you? 😊`
+      `👋 Hey! How can I help you? 😊`
     );
 
     await nayan.sendMessage(sender.id, {
